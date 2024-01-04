@@ -1,21 +1,23 @@
 import { readFile } from "node:fs";
 
-type Constraints = {
+export type Constraints = {
   MAX_RED: number;
   MAX_BLUE: number;
   MAX_GREEN: number;
 };
 
-readFile("./input.md", "utf-8", (e, data) => {
-  if (e) {
-    console.log(e);
-  } else {
-    const res = calcTot(data.split("\n"));
-    console.log(res);
-  }
-});
+export function run() {
+  readFile("./input.md", "utf-8", (e, data) => {
+    if (e) {
+      console.log(e);
+    } else {
+      const res = calcTot(data.split("\n"));
+      console.log(res);
+    }
+  });
+}
 
-function calcTot(rows: string[]): number {
+export function calcTot(rows: string[]): number {
   let sum = 0;
   for (const r of rows) {
     sum += isGamePossibleUnderConstraints(r, {
@@ -27,7 +29,7 @@ function calcTot(rows: string[]): number {
   return sum;
 }
 
-type SetColors = {
+export type SetColors = {
   blue: number;
   green: number;
   red: number;
@@ -40,7 +42,7 @@ type SetColors = {
  * @param {string} str - game information string
  * @returns {string[]} the game sets, each set contain how many balls, of which color were presented
  */
-function parseGameRounds(str: string): string[] {
+export function parseGameRounds(str: string): string[] {
   //removing the Game i: .... at the beggening
   let s = str.slice(str.indexOf(":") + 2);
   // converting into a nicer form 4 blue, 1 red; 3 red; 1 green -> 4b,1r;3r;1g
@@ -59,7 +61,7 @@ function parseGameRounds(str: string): string[] {
  * @param {string} str - game information string
  * @returns {SetColors[]} SetColor array, each SetColor hold the results for each round in the game.
  */
-function getGameStatistics(str: string): SetColors[] {
+export function getGameStatistics(str: string): SetColors[] {
   const rounds = parseGameRounds(str);
   let game: SetColors[] = [];
   for (const r of rounds) {
@@ -92,7 +94,7 @@ function getGameStatistics(str: string): SetColors[] {
  * @param {Constraints} c - [max balls for each color]
  * @returns {number} [return 0 for an impossible game, otherwise, return the game id]
  */
-function isGamePossibleUnderConstraints(
+export function isGamePossibleUnderConstraints(
   gameString: string,
   c: Constraints,
 ): number {
