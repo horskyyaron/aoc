@@ -34,6 +34,8 @@ func findSharedItem(a string, b string, c string) byte {
 		}
 	}
 
+    // could get precise and make the charsets smaller instead of 122 bytes, and 
+    // make this loop more efficient as well. started from 60 to make things faster a bit.
 	for i := 60; i < len(charset_a); i++ {
 		if charset_a[i] == 1 && charset_b[i] == 1 && charset_c[i] == 1 {
 			return byte(i)
