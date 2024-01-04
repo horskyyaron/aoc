@@ -8,10 +8,21 @@ e.g.
 
 ```
 aoc
-├── 1
-│   ├── file(resource for the question)
-│   ├── go
-│   │   └── sol.go
-│   └── python
-│       └── sol.py
+├── 2023
+│   └── javascript 
+│       ├── 1
+│       │   ├── input.md
+│       │   ├── main.test.ts
+│       │   ├── main.ts
+│       │   ├── mini-input.md
+│       │   ├── package.json
+│       │   ├── package-lock.json
+│       │   └── tsconfig.json
+│       └── 2
+│           ├── input.md //input file (data)
+│           ├── main.ts
+│           ├── package.json
+│           ├── package-lock.json
+│           └── tsconfig.json
+└── README.md
 ```
